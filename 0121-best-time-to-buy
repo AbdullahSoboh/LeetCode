@@ -1,0 +1,13 @@
+class Solution:
+    def maxProfit(self,prices):
+        left = 0 #Buy
+        right = 1 #Sell
+        max_profit = 0
+        while right < len(prices):
+            currentProfit = prices[right] - prices[left] 
+            if prices[left] < prices[right]: #If the price of the left node node is less than the right one (i.e profit is viable) sell
+                max_profit =max(currentProfit,max_profit)
+            else:
+                left = right #(if left node is higher than right one increment left node(too expensive))
+            right += 1
+        return max_profit
